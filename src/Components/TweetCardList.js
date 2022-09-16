@@ -1,5 +1,5 @@
 import TweetCard from './TweetCard.js';
-import {tweetData} from "../tweetData.js"
+import {tweetData} from "../data/tweetData.js"
 
 function TweetCardList() {
     return (

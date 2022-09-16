@@ -1,11 +1,11 @@
 import './App.css';
-import HomePage from './Components/HomePage';
+import NavBar from './Components/NavBar';
 import TweetCardList from './Components/TweetCardList';
 
 function App() {
     return (
         <div className='App'>
-            <HomePage />
+            <NavBar />
             <TweetCardList />
         </div>
     );
