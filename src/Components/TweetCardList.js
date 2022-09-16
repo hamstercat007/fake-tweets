@@ -9,9 +9,9 @@ function TweetCardList() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: "5px"
         }}
       >
-        TweetCardList
         {/* Map array of objects and creating element per object */}
         {tweetData.map((tweet) => {
           return (

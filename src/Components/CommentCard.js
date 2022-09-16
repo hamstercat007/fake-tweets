@@ -1,5 +1,9 @@
-function CommentCard() {
-    return <div>CommentCard</div>;
+function CommentCard({comments}) {
+  return (
+    <div>
+      <div>{comments}</div>
+    </div>
+  );
 }
 
 export default CommentCard;
