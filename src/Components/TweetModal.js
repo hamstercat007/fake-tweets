@@ -1,3 +1,5 @@
+//copied from https://mui.com/material-ui/react-dialog/
+
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -6,9 +8,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import {useState} from "react"
 
 export default function TweetModal() {
   const [open, setOpen] = React.useState(false);
+  const [name, setName] = useState("")
+  const [tweet, setTweet] = useState("")
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -18,17 +23,27 @@ export default function TweetModal() {
     setOpen(false);
   };
 
+  function updateName(e) {
+    setName(e.target.value)
+    console.log("name:", e.target.value)
+  }
+  console.log("tweet:", tweet)
+
+  //name, tweet => push it to tweet data, re-render - take length of current array plus 1 = id, timestamp 
+
+  //let today = new Date();
+// let newDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + " " + today.getHours() + ":" + today.getMinutes();
+
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
         Create New Tweet
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Tweet</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+           Create your Tweet
           </DialogContentText>
           <TextField
             autoFocus
@@ -38,6 +53,7 @@ export default function TweetModal() {
             type="string"
             fullWidth
             variant="standard"
+            onChange={updateName}
           />
             <TextField
             autoFocus
@@ -47,11 +63,12 @@ export default function TweetModal() {
             type="string"
             fullWidth
             variant="standard"
+            onChange={(e) => setTweet(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={handleClose}>Post</Button>
         </DialogActions>
       </Dialog>
     </div>
