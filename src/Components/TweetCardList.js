@@ -10,6 +10,7 @@ function TweetCardList() {
             }}
         >
             TweetCardList
+            {/* Map array of objects and creating element per object */}
             <TweetCard />
         </div>
     );
