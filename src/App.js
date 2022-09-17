@@ -19,10 +19,10 @@ function App() {
             );
         })
     );
-    console.log(list);
+    console.log(list.length);
     return (
         <div className='App'>
-            <NavBar setList={setList} />
+            <NavBar setList={setList} listLength={list.length} />
             <TweetCardList list={list} />
         </div>
     );

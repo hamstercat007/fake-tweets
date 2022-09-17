@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 import TweetCard from './TweetCard';
 
-export default function TweetModal({ setList }) {
+export default function TweetModal({ setList, listLength }) {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState('');
     const [tweet, setTweet] = useState('');
@@ -34,7 +34,8 @@ export default function TweetModal({ setList }) {
         setOpen(false);
         setList((prev) => [
             <TweetCard
-                key={tweet.id}
+                key={listLength + 1}
+                id={listLength + 1}
                 userName={name}
                 timeStamp={newDate}
                 comments={null}
@@ -52,7 +53,7 @@ export default function TweetModal({ setList }) {
     return (
         <div>
             <Button variant='outlined' onClick={handleClickOpen}>
-                Create New Tweet
+                Create New Post
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Tweet</DialogTitle>

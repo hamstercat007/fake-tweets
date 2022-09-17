@@ -1,6 +1,6 @@
 import TweetModal from './TweetModal.js';
 
-function NavBar({ setList }) {
+function NavBar({ setList, listLength }) {
     return (
         <div
             style={{
@@ -10,12 +10,12 @@ function NavBar({ setList }) {
             }}
             id='flex-container'
         >
-            <h1>Welcome to Fake Tweets</h1>
+            <h1>Welcome</h1>
             <div
                 style={{ textAlign: 'left', width: '50%' }}
                 id='tweet-modal-div'
             >
-                <TweetModal setList={setList} />
+                <TweetModal setList={setList} listLength={listLength} />
             </div>
         </div>
     );
