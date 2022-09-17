@@ -1,5 +1,5 @@
 import CommentCard from './CommentCard';
-import NewCommentButton from './NewCommentButton';
+import CommentModal from './CommentModal';
 
 export default function TweetCard({ userName, timeStamp, comments, content }) {
     return (
@@ -8,7 +8,6 @@ export default function TweetCard({ userName, timeStamp, comments, content }) {
             <p>{content}</p>
             <p>{timeStamp}</p>
             {comments ? <CommentCard comments={comments} /> : null}
-            <NewCommentButton />
         </div>
     );
 }
