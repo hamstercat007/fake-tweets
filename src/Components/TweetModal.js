@@ -49,11 +49,6 @@ export default function TweetModal({ setList }) {
         console.log('name:', e.target.value);
     }
 
-    //name, tweet => push it to tweet data, re-render - take length of current array plus 1 = id, timestamp
-
-    //let today = new Date();
-    // let newDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + " " + today.getHours() + ":" + today.getMinutes();
-
     return (
         <div>
             <Button variant='outlined' onClick={handleClickOpen}>
