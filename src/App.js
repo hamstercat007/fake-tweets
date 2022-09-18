@@ -6,6 +6,7 @@ import { tweetData } from './data/tweetData';
 import { useState } from 'react';
 
 function App() {
+    const [currentId, setCurrentId] = useState(5);
     const [list, setList] = useState(
         tweetData.map((tweet) => {
             return (
@@ -20,6 +21,7 @@ function App() {
         })
     );
     console.log(list.length);
+
     return (
         <div className='App'>
             <NavBar setList={setList} listLength={list.length} />

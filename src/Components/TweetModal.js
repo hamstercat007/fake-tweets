@@ -38,17 +38,14 @@ export default function TweetModal({ setList, listLength }) {
                 id={listLength + 1}
                 userName={name}
                 timeStamp={newDate}
-                comments={null}
+                // comments={
+                //     listLength + 1 === currentId ? 'comment is inserted' : null
+                // }
                 content={tweet}
             />,
             ...prev,
         ]);
     };
-
-    function updateName(e) {
-        setName(e.target.value);
-        console.log('name:', e.target.value);
-    }
 
     return (
         <div>
@@ -67,7 +64,7 @@ export default function TweetModal({ setList, listLength }) {
                         type='string'
                         fullWidth
                         variant='standard'
-                        onChange={updateName}
+                        onChange={(e) => setName(e.target.value)}
                     />
                     <TextField
                         autoFocus

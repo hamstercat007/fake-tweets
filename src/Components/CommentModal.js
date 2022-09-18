@@ -7,35 +7,24 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { useState } from 'react';
 
-function CommentModal() {
+function CommentModal({ id, setCommentList }) {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState('');
     const [comment, setComment] = useState('');
 
-    let today = new Date();
-    let newDate =
-        today.getFullYear() +
-        '-' +
-        (today.getMonth() + 1) +
-        '-' +
-        today.getDate() +
-        ' ' +
-        today.getHours() +
-        ':' +
-        today.getMinutes();
-
-    const handleClickOpen = () => {
+    const handleClickOpen = (e) => {
         setOpen(true);
+        console.log(e.target);
     };
 
     const handleClose = () => {
         setOpen(false);
     };
 
-    function updateName(e) {
-        setName(e.target.value);
-        console.log('name:', e.target.value);
-    }
+    const handleSubmit = () => {
+        setOpen(false);
+        setCommentList((prev) => [name, comment, ...prev]);
+    };
 
     return (
         <div>
@@ -44,7 +33,9 @@ function CommentModal() {
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
-                    <DialogContentText>Enter Comment</DialogContentText>
+                    <DialogContentText>
+                        {id + 'Enter Comment'}
+                    </DialogContentText>
                     <TextField
                         autoFocus
                         margin='dense'
@@ -53,7 +44,7 @@ function CommentModal() {
                         type='string'
                         fullWidth
                         variant='standard'
-                        onChange={updateName}
+                        onChange={(e) => setName(e.target.value)}
                     />
                     <TextField
                         autoFocus
@@ -68,7 +59,7 @@ function CommentModal() {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>Post</Button>
+                    <Button onClick={handleSubmit}>Post</Button>
                 </DialogActions>
             </Dialog>
         </div>

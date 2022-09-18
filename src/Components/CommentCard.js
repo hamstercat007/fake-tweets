@@ -6,8 +6,9 @@ import Collapse from '@mui/material/Collapse';
 import { useState } from 'react';
 import CommentModal from './CommentModal';
 
-export default function CommentCard({ name, comments }) {
+export default function CommentCard({ id }) {
     const [openComment, setOpenComment] = useState(false);
+    const [commentList, setCommentList] = useState('loads of comments');
 
     const handleClick = () => {
         setOpenComment(!openComment);
@@ -15,9 +16,6 @@ export default function CommentCard({ name, comments }) {
 
     return (
         <div>
-            <div>{name}</div>
-            <div>{comments}</div>
-
             <List
                 sx={{
                     width: '100%',
@@ -28,14 +26,17 @@ export default function CommentCard({ name, comments }) {
                 aria-labelledby='nested-list-subheader'
             >
                 <ListItemButton onClick={handleClick}>
-                    <ListItemText primary='Comments' />
+                    <ListItemText primary={commentList} />
                     {openComment ? '-' : '+'}
                 </ListItemButton>
                 <Collapse in={openComment} timeout='auto' unmountOnExit>
                     <List component='div' disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
-                            <CommentModal />
-                            <ListItemText primary='Write a comment' />
+                            <CommentModal
+                                id={id}
+                                setCommentList={setCommentList}
+                            />
+                            <ListItemText primary={id + 'Write a comment'} />
                         </ListItemButton>
                     </List>
                 </Collapse>
