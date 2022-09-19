@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 import TweetCard from './TweetCard';
@@ -53,9 +52,8 @@ export default function TweetModal({ setList, listLength }) {
                 Create New Post
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Tweet</DialogTitle>
+                <DialogTitle>New Post</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>Create your Tweet</DialogContentText>
                     <TextField
                         autoFocus
                         margin='dense'

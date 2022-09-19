@@ -1,4 +1,3 @@
-import * as React from 'react';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
@@ -8,7 +7,7 @@ import CommentModal from './CommentModal';
 
 export default function CommentCard({ id }) {
     const [openComment, setOpenComment] = useState(false);
-    const [commentList, setCommentList] = useState('loads of comments');
+    const [commentList, setCommentList] = useState('');
 
     const handleClick = () => {
         setOpenComment(!openComment);
@@ -26,7 +25,7 @@ export default function CommentCard({ id }) {
                 aria-labelledby='nested-list-subheader'
             >
                 <ListItemButton onClick={handleClick}>
-                    <ListItemText primary={commentList} />
+                    Comments
                     {openComment ? '-' : '+'}
                 </ListItemButton>
                 <Collapse in={openComment} timeout='auto' unmountOnExit>
@@ -36,7 +35,9 @@ export default function CommentCard({ id }) {
                                 id={id}
                                 setCommentList={setCommentList}
                             />
-                            <ListItemText primary={id + 'Write a comment'} />
+                            <ListItemText
+                                primary={id + 'Write a comment' + commentList}
+                            />
                         </ListItemButton>
                     </List>
                 </Collapse>

@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -12,9 +11,8 @@ function CommentModal({ id, setCommentList }) {
     const [name, setName] = useState('');
     const [comment, setComment] = useState('');
 
-    const handleClickOpen = (e) => {
+    const handleClickOpen = () => {
         setOpen(true);
-        console.log(e.target);
     };
 
     const handleClose = () => {
