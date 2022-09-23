@@ -26,13 +26,25 @@ export default function TweetModal() {
   function updateName(e) {
     setName(e.target.value)
     console.log("name:", e.target.value)
+    console.log(getDate())
   }
   console.log("tweet:", tweet)
 
-  //name, tweet => push it to tweet data, re-render - take length of current array plus 1 = id, timestamp 
+  function getDate() {
+    let today = new Date();
+    let newDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + " " + today.getHours() + ":" + today.getMinutes();
+    console.log(newDate)
+    return newDate
+  }
 
-  //let today = new Date();
-// let newDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + " " + today.getHours() + ":" + today.getMinutes();
+   async function onSubmit() {
+    await fetch('https://localhost:3001/',
+        {method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({user: name, timestamp: getDate(), textContent: tweet, comments: []})
+      })
+    handleClose()
+  }
 
   return (
     <div>
@@ -68,7 +80,7 @@ export default function TweetModal() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Post</Button>
+          <Button onClick={() => {handleClose(); onSubmit()}}>Post</Button>
         </DialogActions>
       </Dialog>
     </div>
