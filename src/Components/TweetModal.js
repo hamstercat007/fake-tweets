@@ -31,20 +31,26 @@ export default function TweetModal({ setList, listLength }) {
 
     const handleClose = () => {
         setOpen(false);
-        setList((prev) => [
-            <TweetCard
-                key={listLength + 1}
-                id={listLength + 1}
-                userName={name}
-                timeStamp={newDate}
-                // comments={
-                //     listLength + 1 === currentId ? 'comment is inserted' : null
-                // }
-                content={tweet}
-            />,
-            ...prev,
-        ]);
     };
+
+    const handleSubmit = () => {
+        if (name && tweet) {
+            setOpen(false);
+            setList((prev) => [
+                <TweetCard
+                    key={listLength + 1}
+                    id={listLength + 1}
+                    userName={name}
+                    timeStamp={newDate}
+                    content={tweet}
+                />,
+                ...prev,
+            ]);
+            setName('');
+            setTweet('');
+        }
+    };
+    console.log(name, tweet);
 
     return (
         <div>
@@ -62,7 +68,11 @@ export default function TweetModal({ setList, listLength }) {
                         type='string'
                         fullWidth
                         variant='standard'
-                        onChange={(e) => setName(e.target.value)}
+                        required
+                        onChange={(e) => {
+                            console.log('this is target value', e.target.value);
+                            setName(e.target.value);
+                        }}
                     />
                     <TextField
                         autoFocus
@@ -72,12 +82,13 @@ export default function TweetModal({ setList, listLength }) {
                         type='string'
                         fullWidth
                         variant='standard'
+                        required
                         onChange={(e) => setTweet(e.target.value)}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>Post</Button>
+                    <Button onClick={handleSubmit}>Post</Button>
                 </DialogActions>
             </Dialog>
         </div>
